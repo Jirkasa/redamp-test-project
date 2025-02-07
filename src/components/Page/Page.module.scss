@@ -1,0 +1,16 @@
+@use "../../styles/variables.scss" as vars;
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: vars.$color-grey-5;
+    min-height: 100vh;
+
+    padding: 3.2rem;
+}
+
+.contentContainer {
+    max-width: 102.4rem;
+}

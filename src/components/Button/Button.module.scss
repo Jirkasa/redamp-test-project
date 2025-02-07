@@ -1,0 +1,37 @@
+@use "../../styles/variables.scss" as vars;
+
+.button {
+    font-family: inherit;
+    font-size: 1.6rem;
+    line-height: 1;
+
+    color: vars.$color-grey-0;
+    background-color: vars.$color-primary-40;
+    border: none;
+    border-radius: .8rem;
+
+    min-width: 8rem;
+
+    padding: 1.2rem;
+
+    cursor: pointer;
+
+    &:disabled {
+        background-color: vars.$color-grey-20;
+        cursor: unset;
+    }
+
+    &--outlined {
+        background-color: transparent;
+        border: .1rem solid vars.$color-primary-40;
+        color: vars.$color-primary-40;
+
+        padding: 1.1rem;
+
+        &:disabled {
+            background-color: transparent;
+            color: vars.$color-grey-20;
+            border-color: vars.$color-grey-20;
+        }
+    }
+}

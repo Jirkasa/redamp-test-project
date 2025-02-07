@@ -1,0 +1,14 @@
+@use "../../styles/variables.scss" as vars;
+
+.label {
+    display: block;
+    width: fit-content;
+
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: 500;
+
+    color: vars.$color-grey-80;
+
+    margin-bottom: .4rem;
+}
