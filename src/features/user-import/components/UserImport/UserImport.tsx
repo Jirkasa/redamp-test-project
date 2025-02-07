@@ -8,6 +8,7 @@ import UserImportInitialForm from "../UserImportInitialForm/UserImportInitialFor
 import { useAppSelector } from "../../../../hooks/redux";
 import { getImportName, getUploadedFileName } from "../../userImportSlice";
 import UserImportDropFile from "../UserImportDropFile/UserImportDropFile";
+import UserImportLoadedData from "../UserImportLoadedData/UserImportLoadedData";
 
 const UserImport: React.FC = () => {
     const importName = useAppSelector(getImportName);
@@ -35,6 +36,7 @@ const UserImport: React.FC = () => {
                 <Spacer size={6} />
                 {currentStep === 1 && <UserImportInitialForm />}
                 {currentStep === 2 && <UserImportDropFile />}
+                {currentStep === 3 && <UserImportLoadedData />}
             </Tile>
             <Spacer size={6} />
             <DialogButtonsContainer>
