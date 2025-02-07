@@ -1,0 +1,46 @@
+@use "../../styles/variables.scss" as vars;
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+.loader {
+    display: block;
+    margin: 0 auto;
+
+    width: 12.4rem;
+    height: 12.4rem;
+
+    border-radius: 50%;
+    border: .8rem solid;
+    border-color: vars.$color-grey-40 vars.$color-grey-40 transparent;
+
+    position: relative;
+
+    animation: rotate 1s linear infinite;
+
+    &::after {
+        content: "";
+        display: block;
+        
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 6.8rem;
+        height: 6.8rem;
+
+        border-radius: 50%;
+        border: .8rem solid;
+        border-color: vars.$color-primary-50 vars.$color-primary-50 transparent;
+
+        animation: rotateReverse .5s linear infinite;
+    }
+}

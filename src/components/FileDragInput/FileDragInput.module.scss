@@ -1,0 +1,31 @@
+@use "../../styles/variables.scss" as vars;
+
+.dropZone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: .1rem dashed vars.$color-grey-20;
+    border-radius: .4rem;
+
+    min-height: 12.8rem;
+
+    padding: 1.2rem;
+
+    cursor: pointer;
+
+    &--dragging {
+        background-color: vars.$color-grey-5;
+    }
+}
+
+.input {
+    display: none;
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1;
+
+    color: vars.$color-grey-50;
+}

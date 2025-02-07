@@ -1,0 +1,54 @@
+@use "../../styles/variables.scss" as vars;
+
+.container {
+    display: flex;
+    gap: .8rem;
+    align-items: center;
+
+    background-color: vars.$color-grey-5;
+    border-radius: .4rem;
+
+    padding: 1.2rem;
+}
+
+.icon {
+    flex-shrink: 0;
+
+    width: 2rem;
+    height: 2rem;
+    
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: vars.$color-primary-40;
+    }
+}
+
+.name {
+    flex: 2;
+
+    font-size: 1.6rem;
+    line-height: 2rem;
+
+    color: vars.$color-grey-70;
+}
+
+.removeButton {
+    flex-shrink: 0;
+
+    font-size: 0;
+
+    background-color: transparent;
+    border: none;
+
+    width: 2rem;
+    height: 2rem;
+
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: vars.$color-primary-70;
+    }
+}

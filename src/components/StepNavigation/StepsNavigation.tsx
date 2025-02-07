@@ -5,10 +5,10 @@ interface StepsNavigationProps {
     stepsCount: number;
     enabledStepsCount: number;
     currentStep?: number;
+    onClick?: (step: number) => void;
 }
 
-const StepsNavigation: React.FC<StepsNavigationProps> = ({ stepsCount, enabledStepsCount, currentStep }) => {
-
+const StepsNavigation: React.FC<StepsNavigationProps> = ({ stepsCount, enabledStepsCount, currentStep, onClick }) => {
     let stepButtons: JSX.Element[] = [];
     for (let i = 1 ; i <= stepsCount ; i++) {
         stepButtons.push(
@@ -16,6 +16,7 @@ const StepsNavigation: React.FC<StepsNavigationProps> = ({ stepsCount, enabledSt
                 key={i}
                 className={`${styles.button} ${i === currentStep ? styles["button--active"] : ""}`}
                 disabled={i > enabledStepsCount}
+                onClick={() => onClick?.(i)}
             >
                 {i}
             </button>
