@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { User } from './types';
+import { User } from '../types';
 
 export function parseCSVFile(file: File): Promise<string[][]> {
     return new Promise((resolve, reject) => {
@@ -53,7 +53,9 @@ export function setCaret(element: HTMLElement, offset: number): void {
     if (selection == null) { return; }
     let range = document.createRange();
     
-    range.setStart(element.childNodes[0], offset);
+    const childNode = element.childNodes[0];
+    if (!childNode) return;
+    range.setStart(childNode, offset);
     range.collapse(true);
     selection.removeAllRanges();
     selection.addRange(range);

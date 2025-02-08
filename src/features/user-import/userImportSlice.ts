@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 import { User } from "../../types";
-import { convertCSVDataToUsers, parseCSVFile } from "../../utils";
+import { convertCSVDataToUsers, parseCSVFile } from "../../utils/utils";
 
 interface UserImportState {
     importName: string;

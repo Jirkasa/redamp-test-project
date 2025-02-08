@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./EditableTable.module.scss";
-import { getCaret, setCaret } from "../../utils";
+import { getCaret, setCaret } from "../../utils/utils";
 import DOMPurify from "dompurify";
 
 interface TableColumn {
@@ -10,7 +10,12 @@ interface TableColumn {
 
 interface TableRow {
     key: string;
-    data: string[];
+    data: (string|TableRowColumnValue)[];
+}
+
+interface TableRowColumnValue {
+    invalid?: boolean;
+    value: string;
 }
 
 interface EditableTableProps {
@@ -66,8 +71,9 @@ const EditableTable: React.FC<EditableTableProps> = ({ columns, rows, onEdit }) 
                                     suppressContentEditableWarning={true}
                                     onInput={(event) => handleInput(event.currentTarget.innerText)}
                                     onFocus={() => handleCellFocus(row.key, column.key)}
+                                    className={typeof row.data[index] === "object" && row.data[index].invalid ? styles.invalidCell : undefined}
                                 >
-                                    {row.data[index]}
+                                    {typeof row.data[index] === "object" ? row.data[index].value : row.data[index]}
                                 </td>
                             ))}
                         </tr>
