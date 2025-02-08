@@ -3,7 +3,7 @@
 ## Instalace a spuštění
 Pro spuštění této aplikace lokálně si můžete stáhnout tento repozitář. Po stažení nainstalujte NPM balíčky příkazem `npm install` a projekt spusťte pomocí příkazu `npm run dev`.
 
-## Soubor struktura projektu
+## Souborová struktura projektu
 
 ### Kořenová složka
 V následující tabulce jsou popsány některé soubory a složky, které se nacházejí v kořenové složce projektu. Hlavní je složka src, která obsahuje zdrojový kód aplikace.
