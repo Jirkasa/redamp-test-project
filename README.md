@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# Redamp - Testovací aplikace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalace a spuštění
+Pro spuštění této aplikace lokálně si můžete stáhnout tento repozitář. Po stažení nainstalujte NPM balíčky příkazem `npm install` a projekt spusťte pomocí příkazu `npm run dev`.
 
-Currently, two official plugins are available:
+## Soubor struktura projektu
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Kořenová složka
+V následující tabulce jsou popsány některé soubory a složky, které se nacházejí v kořenové složce projektu. Hlavní je složka src, která obsahuje zdrojový kód aplikace.
+| Soubor / Složka | Popis |
+| --------------- | ----- |
+| index.html | HTML stránka aplikace |
+| public/ | Složka se statickými assety. |
+| src/ | Složka obsahující zdrojové soubory aplikace. |
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Složka src
+Složka src obsahuje následující soubory a složky:
+| Soubor / Složka | Popis |
+| ------ | ----- |
+| components/ | Obsahuje znovupoužitelné komponenty. |
+| features/ | Obsahuje komponenty podle různých funkcí aplikace (v tomto případě jen pro import CSV souboru). |
+| hooks/ | Obsahuje custom hooky. |
+| icons/ | Obsahuje SVG ikony. |
+| styles/ | Obsahuje globální CSS styly. |
+| utils/ | Obsahuje různé utility metody atp. |
+| App.tsx | Hlavní komponenta aplikace. |
+| main.tsx | Vstupní bod aplikace. |
+| store.ts | Obsahuje nakonfigurovaný Redux store. |
+| types.ts | Obsahuje nadefinované typy, se kterými se v aplikaci pracuje. |
