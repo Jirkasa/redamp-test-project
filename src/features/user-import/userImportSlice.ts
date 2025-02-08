@@ -55,6 +55,13 @@ const userImportSlice = createSlice({
         removeFile(state) {
             state.uploadedFileName = null;
             state.users = [];
+        },
+        updateUserData(state, action: PayloadAction<{ index: number, key: string, value: string}>) {
+            const { index, key, value } = action.payload;
+            state.users[index] = {
+                ...state.users[index],
+                [key]: value
+            };
         }
     },
     extraReducers: builder => {
@@ -77,7 +84,8 @@ const userImportSlice = createSlice({
 export const {
     setImportName,
     setNote,
-    removeFile
+    removeFile,
+    updateUserData
 } = userImportSlice.actions;
 
 export const getImportName = (state: RootState) => state.userImport.importName;

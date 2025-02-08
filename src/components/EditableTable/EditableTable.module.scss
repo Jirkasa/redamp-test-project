@@ -30,6 +30,7 @@
 
     td {
         padding: .8rem 1.2rem;
+        overflow: hidden;
 
         &:not(:last-child) {
             border-right: .1rem solid vars.$color-grey-10;
