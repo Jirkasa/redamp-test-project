@@ -1,4 +1,5 @@
 @use "../../styles/variables.scss" as vars;
+@use "../../styles/functions.scss" as func;
 
 .tile {
     background-color: vars.$color-grey-0;
@@ -8,4 +9,9 @@
     min-width: 49.6rem;
 
     padding: 2.4rem;
+
+    @media (max-width: func.pxToEm(650)) {
+        min-width: auto;
+        width: 100%;
+    }
 }

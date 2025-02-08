@@ -9,7 +9,9 @@ const Page: React.FC<PageProps> = ({ children }) => {
     return (
         <div className={styles.page}>
             <div className={styles.contentContainer}>
-                {children}
+                <div className={styles.innerContainer}>
+                    {children}
+                </div>
             </div>
         </div>
     );

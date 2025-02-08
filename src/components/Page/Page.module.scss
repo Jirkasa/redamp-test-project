@@ -7,10 +7,18 @@
 
     background-color: vars.$color-grey-5;
     min-height: 100vh;
+    width: 100%;
 
     padding: 3.2rem;
 }
 
 .contentContainer {
+    width: 100%;
     max-width: 102.4rem;
+}
+
+.innerContainer {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
 }

@@ -1,9 +1,14 @@
 @use "../../styles/variables.scss" as vars;
+@use "../../styles/functions.scss" as func;
 
 .container {
     display: flex;
     justify-content: center;
     gap: 3.2rem;
+
+    @media (max-width: func.pxToEm(400)) {
+        gap: 1.6rem;
+    }
 }
 
 .button {
