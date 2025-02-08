@@ -11,6 +11,7 @@ import UserImportDropFile from "../UserImportDropFile/UserImportDropFile";
 import UserImportLoadedData from "../UserImportLoadedData/UserImportLoadedData";
 import { UsersValidationResult, validateUsers } from "../../../../utils/usersValidation";
 import UserImportRecapitulation from "../UserImportRecapitulation/UserImportRecapitulation";
+import Message from "../../../../components/Message/Message";
 
 const UserImport: React.FC = () => {
     const importName = useAppSelector(getImportName);
@@ -21,6 +22,15 @@ const UserImport: React.FC = () => {
         () => validateUsers(users),
         [users]
     );
+    const [importFinished, setImportFinished] = useState<boolean>(false);
+
+    if (importFinished) {
+        return (
+            <Tile>
+                <Message>Import has been successfully processed.</Message>
+            </Tile>
+        );
+    }
 
     let enabledStepsCount = 1;
     if (importName.trim().length > 0) {
@@ -54,7 +64,7 @@ const UserImport: React.FC = () => {
             <DialogButtonsContainer>
                 <Button outlined disabled={currentStep === 1} onClick={() => setCurrentStep(currentStep-1)}>Back</Button>
                 {currentStep === 4 ? (
-                    <Button>Submit</Button>
+                    <Button onClick={() => setImportFinished(true)}>Submit</Button>
                 ) : (
                     <Button disabled={currentStep >= enabledStepsCount} onClick={() => setCurrentStep(currentStep+1)}>Next</Button>
                 )}
