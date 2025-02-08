@@ -9,6 +9,10 @@ export class UsersValidationResult {
         this.errors = errors;
     }
 
+    public containsErrors(): boolean {
+        return this.errors.size > 0;
+    }
+
     public isValid(index: number, key: keyof User): boolean {
         const userErrors = this.errors.get(index);
         if (!userErrors) return true;

@@ -1,18 +1,18 @@
-import React, { useMemo } from "react";
+import React from "react";
 import Heading from "../../../../components/Heading/Heading";
 import Spacer from "../../../../components/Spacer/Spacer";
 import EditableTable from "../../../../components/EditableTable/EditableTable";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { getUsers, updateUserData } from "../../userImportSlice";
-import { UsersValidationResult, validateUsers } from "../../../../utils/usersValidation";
+import { UsersValidationResult } from "../../../../utils/usersValidation";
 
-const UserImportLoadedData: React.FC = () => {
+interface UsersImportLoadedDataProps {
+    usersValidationResult: UsersValidationResult;
+}
+
+const UserImportLoadedData: React.FC<UsersImportLoadedDataProps> = ({ usersValidationResult }) => {
     const dispatch = useAppDispatch();
     const users = useAppSelector(getUsers);
-    const usersValidationResult = useMemo<UsersValidationResult>(
-        () => validateUsers(users),
-        [users]
-    );
 
     const handleTableEdit = (rowKey: string, columnKey: string, value: string) => {
         dispatch(updateUserData({

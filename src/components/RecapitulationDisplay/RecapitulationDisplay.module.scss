@@ -1,0 +1,38 @@
+@use "../../styles/variables.scss" as vars;
+
+.container {
+    background-color: vars.$color-grey-5;
+    border-radius: .4rem;
+
+    width: fit-content;
+    min-width: 23.2rem;
+    max-width: 100%;
+    margin: 0 auto;
+
+    padding: 1.2rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.6rem;
+
+    font-size: 1.6rem;
+    line-height: 1;
+
+    white-space: nowrap;
+    color: vars.$color-grey-70;
+
+    &:not(:last-child) {
+        margin-bottom: 1.2rem;
+    }
+}
+
+.label {
+    font-weight: 500;
+}
+
+.value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

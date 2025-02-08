@@ -94,5 +94,6 @@ export const getProcessingCSVData = (state: RootState) => state.userImport.proce
 export const getCSVDataError = (state: RootState) => state.userImport.csvDataError;
 export const getUploadedFileName = (state: RootState) => state.userImport.uploadedFileName;
 export const getUsers = (state: RootState) => state.userImport.users;
+export const getUsersCount = (state: RootState) => state.userImport.users.length;
 
 export default userImportSlice.reducer;

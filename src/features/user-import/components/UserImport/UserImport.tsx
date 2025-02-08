@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Tile from "../../../../components/Tile/Tile";
 import StepsNavigation from "../../../../components/StepNavigation/StepsNavigation";
 import Spacer from "../../../../components/Spacer/Spacer";
@@ -6,14 +6,21 @@ import DialogButtonsContainer from "../../../../components/DialogButtonsContaine
 import Button from "../../../../components/Button/Button";
 import UserImportInitialForm from "../UserImportInitialForm/UserImportInitialForm";
 import { useAppSelector } from "../../../../hooks/redux";
-import { getImportName, getUploadedFileName } from "../../userImportSlice";
+import { getImportName, getUploadedFileName, getUsers } from "../../userImportSlice";
 import UserImportDropFile from "../UserImportDropFile/UserImportDropFile";
 import UserImportLoadedData from "../UserImportLoadedData/UserImportLoadedData";
+import { UsersValidationResult, validateUsers } from "../../../../utils/usersValidation";
+import UserImportRecapitulation from "../UserImportRecapitulation/UserImportRecapitulation";
 
 const UserImport: React.FC = () => {
     const importName = useAppSelector(getImportName);
     const uploadedFileName = useAppSelector(getUploadedFileName);
     const [currentStep, setCurrentStep] = useState<number>(1);
+    const users = useAppSelector(getUsers);
+    const usersValidationResult = useMemo<UsersValidationResult>(
+        () => validateUsers(users),
+        [users]
+    );
 
     let enabledStepsCount = 1;
     if (importName.trim().length > 0) {
@@ -21,6 +28,10 @@ const UserImport: React.FC = () => {
 
         if (uploadedFileName !== null) {
             enabledStepsCount = 3;
+
+            if (!usersValidationResult.containsErrors()) {
+                enabledStepsCount = 4;
+            }
         }
     }
 
@@ -36,12 +47,17 @@ const UserImport: React.FC = () => {
                 <Spacer size={6} />
                 {currentStep === 1 && <UserImportInitialForm />}
                 {currentStep === 2 && <UserImportDropFile />}
-                {currentStep === 3 && <UserImportLoadedData />}
+                {currentStep === 3 && <UserImportLoadedData usersValidationResult={usersValidationResult} />}
+                {currentStep === 4 && <UserImportRecapitulation />}
             </Tile>
             <Spacer size={6} />
             <DialogButtonsContainer>
                 <Button outlined disabled={currentStep === 1} onClick={() => setCurrentStep(currentStep-1)}>Back</Button>
-                <Button disabled={currentStep >= enabledStepsCount} onClick={() => setCurrentStep(currentStep+1)}>Next</Button>
+                {currentStep === 4 ? (
+                    <Button>Submit</Button>
+                ) : (
+                    <Button disabled={currentStep >= enabledStepsCount} onClick={() => setCurrentStep(currentStep+1)}>Next</Button>
+                )}
             </DialogButtonsContainer>
         </>
     )
