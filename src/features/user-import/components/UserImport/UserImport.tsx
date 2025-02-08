@@ -27,7 +27,7 @@ const UserImport: React.FC = () => {
     if (importFinished) {
         return (
             <Tile>
-                <Message>Import has been successfully processed.</Message>
+                <Message>Import has been successfully completed.</Message>
             </Tile>
         );
     }

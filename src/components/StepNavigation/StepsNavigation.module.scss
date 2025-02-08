@@ -27,10 +27,25 @@
 
     cursor: pointer;
 
+    transition: background-color .2s;
+
+    &:hover {
+        background-color: darken(vars.$color-grey-5, 5%);
+    }
+
     &--active {
         color: vars.$color-grey-0;
         background-color: vars.$color-primary-40;
         border-color: vars.$color-primary-60;
+
+        &:hover {
+            background-color: darken(vars.$color-primary-40, 5%);
+        }
+    }
+
+    &:focus-visible {
+        outline: .2rem solid vars.$color-grey-80;
+        outline-offset: -.1rem;
     }
 
     &:disabled {

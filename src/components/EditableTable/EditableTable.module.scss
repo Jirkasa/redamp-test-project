@@ -33,6 +33,12 @@
         padding: .8rem 1.2rem;
         overflow: hidden;
 
+        &:focus-visible {
+            outline: .2rem solid vars.$color-grey-80;
+            outline-offset: -.1rem;
+            border-radius: .4rem;
+        }
+
         &:not(:last-child) {
             border-right: .1rem solid vars.$color-grey-10;
         }

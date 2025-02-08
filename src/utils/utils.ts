@@ -55,6 +55,12 @@ export function setCaret(element: HTMLElement, offset: number): void {
     
     const childNode = element.childNodes[0];
     if (!childNode) return;
+
+    const maxOffset = childNode.textContent?.length || 0;
+    if (offset > maxOffset) {
+        offset = maxOffset;
+    }
+
     range.setStart(childNode, offset);
     range.collapse(true);
     selection.removeAllRanges();

@@ -16,6 +16,17 @@
 
     cursor: pointer;
 
+    transition: background-color .15s, color .15s;
+
+    &:hover {
+        background-color: darken(vars.$color-primary-40, 5%);
+    }
+
+    &:focus-visible {
+        outline: .2rem solid vars.$color-grey-80;
+        outline-offset: -.1rem;
+    }
+
     &:disabled {
         background-color: vars.$color-grey-20;
         cursor: unset;
@@ -27,6 +38,10 @@
         color: vars.$color-primary-40;
 
         padding: 1.1rem;
+
+        &:hover {
+            color: vars.$color-grey-0;
+        }
 
         &:disabled {
             background-color: transparent;
